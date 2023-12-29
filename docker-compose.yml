@@ -1,21 +1,20 @@
 version: "3.9" 
 
 services:
-  img-comp-app:
-    build: .  # Build the image from the Dockerfile
+  imgcmp-app:
     ports:
       - "5051:5051"  # Expose port 5051 for communication with Caddy
 
   caddy:
     image: caddy:2.7.6-alpine
     restart: unless-stopped
-    command: caddy reverse-proxy --from https://srgimgcomp.swapinfotech.com:443 --to http://localhost:5051
+    command: caddy reverse-proxy --from https://srgimgcomp.swapinfotech.com:443 --to http://imgcmp-app:5051
     ports:
       - "80:80"  # Expose port 80 for external access
       - "443:443"  # Expose port 443 for HTTPS 
     volumes:
       - caddy:/data
     depends_on:
-      - img-comp-app
+      - imgcmp-app
 volumes:
   caddy:

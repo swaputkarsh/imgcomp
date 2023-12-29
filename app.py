@@ -1,21 +1,15 @@
-# First install these dependencies in your terminal
-# !pip install git+https://github.com/openai/CLIP.git
-# !pip install open_clip_torch
-# !pip install sentence_transformers
-
-# Now install all the libraries that are given below
 from flask import Flask, request, jsonify
+from flask_cors import CORS
 from PIL import Image
 import matplotlib.image as mpimg
 import torch
-from sentence_transformers import util 
-
+from sentence_transformers import util
 import open_clip
 from io import BytesIO
 
 # Now run the Flask App 
 app = Flask(__name__)
-
+CORS(app)
 # image processing model
 device = "cuda" if torch.cuda.is_available() else "cpu"
 model, _, preprocess = open_clip.create_model_and_transforms('ViT-B-16-plus-240', pretrained="laion400m_e32")
