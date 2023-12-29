@@ -1,3 +1,3 @@
 #!/bin/bash
 
-docker build -f imgcmp-app:$1 .
+docker build -t imgcmp-app:$1 .
