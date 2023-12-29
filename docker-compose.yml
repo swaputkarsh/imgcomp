@@ -2,6 +2,7 @@ version: "3.9"
 
 services:
   imgcmp-app:
+    image: imgcmp-app:0.1
     ports:
       - "5051:5051"  # Expose port 5051 for communication with Caddy
 
