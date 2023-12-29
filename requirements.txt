@@ -7,4 +7,4 @@ torchaudio==2.1.2
 torchvision==0.16.2
 sentence-transformers==2.2.2
 open-clip-torch==2.23.0
-Flask-CORS==3.0.10
+Flask-Cors==4.0.0

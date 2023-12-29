@@ -7,7 +7,7 @@ from sentence_transformers import util
 import open_clip
 from io import BytesIO
 
-# Now run the Flask App 
+# Now run the Flask App
 app = Flask(__name__)
 CORS(app)
 # image processing model
@@ -36,7 +36,8 @@ def generate_score(img1_data, img2_data):
 
     cos_scores = util.pytorch_cos_sim(img1, img2)
     score = round(float(cos_scores[0][0]) * 100, 2)
-
+    if score < 70:
+        score = 0
     result = {
         "similarity_score": score,
         "comparison_result": 'images are similar' if score >= 70 else 'images are different'
@@ -82,4 +83,3 @@ def show_images():
 
 if __name__ == "__main__":
     app.run(debug=True)
-
