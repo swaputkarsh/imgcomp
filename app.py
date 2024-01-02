@@ -73,7 +73,7 @@ def compare_images():
         img2_data = request.files["image2"].read()
 
         # Save and rename images
-        output_folder = r"/home/imgcomp/data"  # Change this to your desired output folder
+        output_folder = r"/app/data"  # Change this to your desired output folder
         save_result = rename_and_save_images(img1_data, img2_data, output_folder)
 
         # Calculate similarity score
