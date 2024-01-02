@@ -78,7 +78,6 @@ def compare_images():
 
         # Calculate similarity score
         result = generate_score(img1_data, img2_data)
-        result.update(save_result)
 
         return jsonify(result)
 
